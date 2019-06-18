@@ -2,12 +2,18 @@ package com.lyf.springbootall;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class SpringbootallApplication {
+public class SpringbootallApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(SpringbootallApplication.class, args);
     }
 
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return super.configure(builder);
+    }
 }
