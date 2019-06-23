@@ -31,6 +31,7 @@ public class MyWsContextListener extends WsContextListener {
                 field.setAccessible(true);
                 Object o = field.get(wsServerContainer);
                 if (o instanceof Map) {
+                    //Fixme: 这种方式在非Tomcat环境下失效 total = 0
                     System.out.println(">>>>>>>>>>>>>>[Endpoint配置] total: " + ((Map) o).size());
                 }
             } catch (NoSuchFieldException | IllegalAccessException e) {

@@ -10,19 +10,18 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
 public class NotTomcatEnvConditional implements Condition {
     @Override
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
-        System.out.println(">>>>>>>>>>>>>>>>进入这里了");
+        System.out.println(">>>>>>>>>>>>>>>>判断是否处于Tomcat环境");
+        //非Tomcat环境
         boolean b = true;
         try {
-            Object o = System.getProperty("CATALINA_BASE");
-            System.out.println("dfsdf" + o);
+            Object o = System.getenv("CATALINA_BASE");
             if (o != null && !"".equals(o.toString().trim())) {
                 //是在tomcat环境
                 b = false;
             }
         } catch (Exception ignored) {
         }
-        //非Tomcat环境
-        System.out.println(">>>>>>>>>>>>>>>>判断结果：" + b);
+        System.out.println(">>>>>>>>>>>>>>>>Tomcat环境判断结果：" + !b);
         return b;
     }
 }
